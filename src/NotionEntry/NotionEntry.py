@@ -27,9 +27,11 @@ class NotionEntry:
     newLine = ''
     for line in fin:
       newLine = line
+      print("newLine", newLine)
       if self.__isNotionLink(line):
         # Group 1: \[.*\] ; Group 2: \.*
         matchedLine = re.search('(\[.*\])\((.*)\)', line)
+        print("matchedLine", matchedLine)
         quoteUrl = matchedLine.group(2)
         newLine = rf"{matchedLine.group(1)}({self.__removeTokensFromLine(quoteUrl)})"
       fout.write(newLine)

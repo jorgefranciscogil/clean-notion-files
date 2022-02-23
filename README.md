@@ -1,4 +1,9 @@
-## VSCode
+# Clean notion files
+
+Clean tokens from folders and files exported to Markdowd format from [Notion](https://www.notion.so/).
+
+## Prepare environment
+### VSCode
 
 Go to settings and add below entry to set relative path of your libraries:
 
@@ -6,17 +11,17 @@ Go to settings and add below entry to set relative path of your libraries:
 
 Into `.env` file type:
 
-`PYTHONPATH=./scripts/src:${PYTHONPATH}`
-## Upgrade python
+`PYTHONPATH=./clean-notion-files/src:${PYTHONPATH}`
+### Upgrade python
 
-### Install python3.9
+#### Install python3.9
 
-#### Linux
+##### Linux
 
 `sudo apt-get update && sudo apt-get upgrade`
 `sudo apt-get install python3.9`
 
-#### Mac OS
+##### Mac OS
 
 Install python through python environment (recomended):
 
@@ -50,7 +55,7 @@ To select a version:
 > However, if you want install python 3 directly, you can type:
 > `brew install python3`
 
-#### Install pip
+##### Install pip
 
 `sudo apt install python3-pip`
 
@@ -62,7 +67,7 @@ Make sure your pip version has installed as latest
 
 `python -m pip install -U pip`
 
-## Run
+### Run
 
 `python -m pip install -e .` or `pip install -e .`
 
@@ -70,8 +75,8 @@ Make sure your pip version has installed as latest
 
 [setuptools](https://pythonhosted.org/an_example_pypi_project/setuptools.html)
 
-`python -m truncate-files <source_path>`
+`python -m clean-notion-files <source_path>`
 
 **Example**
 
-`$ ~[..]/scripts> python -m truncate-files ..`
+`$ ~[..]/clean-notion-files> python -m clean-notion-files ..`

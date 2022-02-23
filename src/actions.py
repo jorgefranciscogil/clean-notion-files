@@ -2,12 +2,13 @@ import sys, os
 from NotionEntry.NotionEntry import NotionEntry
 
 def getParams(scriptParams):
-  print(f'from... {scriptParams[1]}\n')
+  print(f'arg... {scriptParams[1]}\n')
   if len(scriptParams) < 2:
     sys.exit('Usage: %s <tree-path-of-md-files>' % scriptParams[0])
   return scriptParams[1]
 
 def walkdir(src):
+  print(f'from... {src}\n')
   for entry in os.scandir(src):
     notionEntry = None
     _is = checkers(entry.path)
@@ -29,8 +30,9 @@ def walkdir(src):
       notionEntry.removeSourceFolder()
 
 def checkers(entryPath):
+  print("entryPath ----->>>>>", entryPath, os.path.basename(entryPath))
   return {
     'notHiddenEntry': not os.path.basename(entryPath).startswith('.'),
-    'notScriptsFolder': os.path.basename(entryPath) != 'scripts',
+    'notScriptsFolder': os.path.basename(entryPath) != 'clean-notion-files',
     'markdownFile': entryPath.endswith(".md")
   }
