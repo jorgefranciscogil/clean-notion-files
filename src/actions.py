@@ -1,5 +1,5 @@
 import sys, os
-from NotionEntry.NotionEntry import NotionEntry
+from .NotionEntry import NotionEntry
 
 def getParams(scriptParams):
   print(f'arg... {scriptParams[1]}\n')
@@ -17,7 +17,7 @@ def walkdir(src):
 
     # Filer by notion file
     if isNotionFolder or isNotionFile:
-      notionEntry = NotionEntry(entry.path)
+      notionEntry = NotionEntry.NotionEntry(entry.path)
       if isNotionFolder:
         notionEntry.createTargetFolder()
       if isNotionFile:

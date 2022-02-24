@@ -1,6 +1,5 @@
-from setuptools import setup
-
-setup (
+import setuptools
+setuptools.setup (
   name='clean-notion-files',
   version='0.1',
   description='Clean notion files',
@@ -8,5 +7,6 @@ setup (
   author='Jorge Francisco Gil',
   author_email='jfrangcgmail.com',
   license='MIT',
-  zip_safe=False
+  zip_safe=False,
+  packages=setuptools.find_packages()
 )

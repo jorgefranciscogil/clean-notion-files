@@ -1,6 +1,15 @@
-import sys
-from actions import getParams, walkdir
+import sys, os
 
-rootDir = getParams(sys.argv)
+from src import actions
+# from . import .src.actions
+# import .src.actions
 
-walkdir(rootDir)
+# rootDir = actions.getParams(sys.argv)
+currentDir = os.getcwd()
+
+# print("rootDir", rootDir)
+print("currentDir", currentDir)
+print(__name__)
+
+if __name__ == '__main__':
+    actions.walkdir(currentDir)
