@@ -1,11 +1,5 @@
-import sys, os
-from .NotionEntry import NotionEntry
-
-def getParams(scriptParams):
-  print(f'arg... {scriptParams[1]}\n')
-  if len(scriptParams) < 2:
-    sys.exit('Usage: %s <tree-path-of-md-files>' % scriptParams[0])
-  return scriptParams[1]
+import os
+from src.NotionEntry.NotionEntry import NotionEntry
 
 def walkdir(src):
   print(f'from... {src}\n')
@@ -17,7 +11,7 @@ def walkdir(src):
 
     # Filer by notion file
     if isNotionFolder or isNotionFile:
-      notionEntry = NotionEntry.NotionEntry(entry.path)
+      notionEntry = NotionEntry(entry.path)
       if isNotionFolder:
         notionEntry.createTargetFolder()
       if isNotionFile:
