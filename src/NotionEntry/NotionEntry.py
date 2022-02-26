@@ -27,11 +27,10 @@ class NotionEntry:
     newLine = ''
     for line in fin:
       newLine = line
-      print("newLine", newLine)
+      # print("newLine", newLine)
       if self.__isNotionLink(line):
         # Group 1: \[.*\] ; Group 2: \.*
         matchedLine = re.search('(\[.*\])\((.*)\)', line)
-        print("matchedLine", matchedLine)
         quoteUrl = matchedLine.group(2)
         newLine = rf"{matchedLine.group(1)}({self.__removeTokensFromLine(quoteUrl)})"
       fout.write(newLine)
@@ -77,5 +76,8 @@ class NotionEntry:
     return quoteUrlWithoutToken
 
   def __isNotionLink(self, line):
-    isNotionLink = re.search(rf'{self.NOTION_FILE_TOKEN}', urllib.parse.unquote(line))
+    isNotionLink = False
+    matchedLine = re.search('(\[.*\])\((.*)\)', line)
+    if matchedLine is not None:
+      isNotionLink = bool(re.search(rf'{self.NOTION_FILE_TOKEN}', urllib.parse.unquote(matchedLine.group(2))))
     return isNotionLink
