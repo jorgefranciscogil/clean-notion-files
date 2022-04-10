@@ -24,11 +24,13 @@ class NotionEntry:
     print("---->>> FILE ---->>>>", self.__path)
     fin = open(backupPath, 'rt')
     fout = open(self.cleanedPath, 'w+')
-    newLine = ''
+    newLine = ""
+    mainTitle = ""
     for line in fin:
       newLine = line
-      if self.__isMainTitle(newLine):
-        print("MAIN TITLE!!!", newLine)
+      if self.__isMainTitle(newLine) and not mainTitle:
+        mainTitle = line
+        print("MAIN TITLE!!!", mainTitle)
       # print("newLine", newLine)
       if self.__isNotionLink(line):
         # Group 1: \[.*\] ; Group 2: \.*
@@ -62,6 +64,9 @@ class NotionEntry:
     pathWithoutFolderTokens = self.__removeFolderTokensFromPath(path)
     pathWithoutTokens = self.__removeFileTokenFromPath(pathWithoutFolderTokens)
     return pathWithoutTokens
+
+  def __getMainTitle(self, path):
+    pass
 
   def __removeFolderTokensFromPath(self, path):
     pathWithoutFolderTokens = re.sub(rf'{self.NOTION_FOLDER_TOKEN}', "/", urllib.parse.unquote(path))
