@@ -27,6 +27,8 @@ class NotionEntry:
     newLine = ''
     for line in fin:
       newLine = line
+      if self.__isMainTitle(newLine):
+        print("MAIN TITLE!!!", newLine)
       # print("newLine", newLine)
       if self.__isNotionLink(line):
         # Group 1: \[.*\] ; Group 2: \.*
@@ -81,3 +83,7 @@ class NotionEntry:
     if matchedLine is not None:
       isNotionLink = bool(re.search(rf'{self.NOTION_FILE_TOKEN}', urllib.parse.unquote(matchedLine.group(2))))
     return isNotionLink
+  
+  def __isMainTitle(self, line):
+    matchedLine = re.search('^([#]{1}\s)(.+)$', line)
+    return matchedLine
